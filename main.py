@@ -21,7 +21,6 @@ wheels.set_motor_rotation(20)
 matrix = LightMatrix()
 # endregion
 
-
 # region Functions
 def check_battery():
     BATTERY_OK = '\033[32m'
@@ -39,6 +38,13 @@ def check_battery():
 
 
 def print_module_objects_and_attributes(module_name):
+    """Print hidden Spike APIs given a module name.
+
+    Usage:
+        `print_module_objects_and_attributes('hub')`
+    Args:
+        module_name (string): i.e. 'hub' or 'spike'
+    """    
     module = __import__(module_name)
     print("Module: ", module_name)
     objects = dir(module)
@@ -51,6 +57,17 @@ def print_module_objects_and_attributes(module_name):
         for attribute in attributes:
             print("- ", attribute)
         print()
+
+def end_program():
+    """Gracefully end the program without any traceback messages.
+    """    
+    try:
+        # Code that may raise SystemExit
+        sys.exit(0)
+    except SystemExit:
+        # Handle the SystemExit exception without propagating it
+        pass
+
 # endregion
 
 # region Main
@@ -59,14 +76,14 @@ def main():
     matrix.show_image("CLOCK8")
     wheels.move(5)
     print('distance=%d' % distance_sensor.get_distance_cm())
-    
-    print_module_objects_and_attributes('hub')
+
 # endregion
 
 # region DO NOT EDIT ANYTHING HERE 
+print("\n\nStarting... ")
 check_battery()
-print("Starting... ")
 timer = Timer()
 main()
-sys.exit("Ended program. Elapsed time " + str(timer.now()))
+print("Ended program. Elapsed time: " + str(timer.now()))
+end_program()
 # endregion
