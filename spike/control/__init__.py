@@ -62,19 +62,20 @@ class Timer:
         A stop watch timer. To use the Timer, you must first initialise it.
         """
         pass
-        def reset(self):
-            """
-            Sets the Timer to '0'.
-            """
-            pass
+    def reset(self):
+        """
+        Sets the Timer to '0'.
+        """
+        pass
+    
+    def now(self):
+        """
+        Retrieves the 'right now' time of the Timer.
         
-        def now(self):
-            """
-            Retrieves the 'right now' time of the Timer.
-            Returns
-            -----------
-            The current time, specified in seconds.
-            Type: Integer ( a positive or negative whole number, including 0)
-            Values: A value greather than 0
-            """ 
+        Returns
+        -----------
+        The current time, specified in seconds.
+        Type: Integer ( a positive or negative whole number, including 0)
+        Values: A value greather than 0
+        """ 
             
