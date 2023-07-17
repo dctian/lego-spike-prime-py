@@ -1,7 +1,7 @@
 # LEGO type:standard slot:0 autostart
 # The above line allows VS Code Lego Spike Extension to upload and run code.
 
-# region Imports 
+# region Imports
 from math import *
 import sys
 
@@ -22,15 +22,17 @@ matrix = LightMatrix()
 # endregion
 
 # region Functions
+
+
 def check_battery():
     BATTERY_OK = '\033[32m'
     BATTERY_LOW = '\033[31m'
     ENDC = '\033[0m'
     VOLTAGE_THRESHOLD = 8000  # Threshold for battery level
-    
-    #Battery voltage printout in console for monitoring charge
-    if battery.voltage() < VOLTAGE_THRESHOLD: 
-        print(BATTERY_LOW + "battery voltage is too low: " + str(battery.voltage()) + 
+
+    # Battery voltage printout in console for monitoring charge
+    if battery.voltage() < VOLTAGE_THRESHOLD:
+        print(BATTERY_LOW + "battery voltage is too low: " + str(battery.voltage()) +
               " \n ----------------------------- \n >>>> please charge robot <<<< \n ----------------------------- \n"
               + ENDC)
     else:
@@ -44,7 +46,7 @@ def print_module_objects_and_attributes(module_name):
         `print_module_objects_and_attributes('hub')`
     Args:
         module_name (string): i.e. 'hub' or 'spike'
-    """    
+    """
     module = __import__(module_name)
     print("Module: ", module_name)
     objects = dir(module)
@@ -52,15 +54,16 @@ def print_module_objects_and_attributes(module_name):
     for obj_name in objects:
         obj = getattr(module, obj_name)
         attributes = dir(obj)
-        
+
         print("Object: ", obj_name)
         for attribute in attributes:
             print("- ", attribute)
         print()
 
+
 def end_program():
     """Gracefully end the program without any traceback messages.
-    """    
+    """
     try:
         # Code that may raise SystemExit
         sys.exit(0)
@@ -71,6 +74,8 @@ def end_program():
 # endregion
 
 # region Main
+
+
 def main():
     # ----------------  Put your code logic here  -----------------
     matrix.show_image("CLOCK8")
@@ -79,7 +84,8 @@ def main():
 
 # endregion
 
-# region DO NOT EDIT ANYTHING HERE 
+
+# region DO NOT EDIT ANYTHING HERE
 print("\n\nStarting... ")
 check_battery()
 timer = Timer()
